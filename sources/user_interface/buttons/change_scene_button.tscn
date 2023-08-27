@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://djidxusshrete"]
+
+[ext_resource type="PackedScene" uid="uid://s6hwocgcsrhs" path="res://sources/user_interface/buttons/button.tscn" id="1_p1pbd"]
+[ext_resource type="Script" path="res://sources/user_interface/buttons/change_scene_button.gd" id="2_ux505"]
+
+[node name="Button" instance=ExtResource("1_p1pbd")]
+pivot_offset = Vector2(4, 4)
+script = ExtResource("2_ux505")
+scene_name = ""
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

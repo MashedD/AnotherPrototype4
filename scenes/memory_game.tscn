@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://bso4btm71cll3"]
+
+[ext_resource type="Texture2D" uid="uid://dx5j4varpus2v" path="res://assets/background.png" id="1_jilov"]
+[ext_resource type="PackedScene" uid="uid://djidxusshrete" path="res://sources/user_interface/buttons/change_scene_button.tscn" id="1_nmujw"]
+[ext_resource type="Script" path="res://scenes/memory_game.gd" id="1_rteco"]
+[ext_resource type="Script" path="res://scenes/top_bar.gd" id="3_krsa5"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dwo47"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6u4c4"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="Environment" id="Environment_vgp23"]
+background_color = Color(0, 0.882353, 0.831373, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0, 0.219608, 1, 1)
+ambient_light_energy = 0.1
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rteco")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_jilov")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+script = ExtResource("3_krsa5")
+
+[node name="BackButton" parent="VBoxContainer/TopBar" instance=ExtResource("1_nmujw")]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 45.0
+offset_bottom = 35.0
+pivot_offset = Vector2(22.5, 15.5)
+text = "Back"
+scene_name = "main_menu"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(1920, 1030)
+render_target_update_mode = 4
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VBoxContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.144102, -1.12558, 0.912883)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VBoxContainer/SubViewportContainer/SubViewport/StaticBody3D"]
+mesh = SubResource("PlaneMesh_dwo47")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VBoxContainer/SubViewportContainer/SubViewport/StaticBody3D"]
+shape = SubResource("BoxShape3D_6u4c4")
+
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+current = true
+fov = 90.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_vgp23")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c16g5wmb30bpq"]
+
+[ext_resource type="Theme" uid="uid://bahgcsu0638th" path="res://assets/default_theme.tres" id="1_kjex2"]
+[ext_resource type="PackedScene" uid="uid://djidxusshrete" path="res://sources/user_interface/buttons/change_scene_button.tscn" id="4_pwnjl"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kjex2")
+
+[node name="BackButton" parent="." instance=ExtResource("4_pwnjl")]
+layout_mode = 0
+pivot_offset = Vector2(22.5, 15.5)
+text = "Back"
+scene_name = "main_menu"

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://4tewo07oeb7c"]
+
+[ext_resource type="Theme" uid="uid://bahgcsu0638th" path="res://assets/default_theme.tres" id="1_o55q6"]
+[ext_resource type="PackedScene" uid="uid://djidxusshrete" path="res://sources/user_interface/buttons/change_scene_button.tscn" id="4_uh3mw"]
+[ext_resource type="Script" path="res://addons/SmoothScroll/SmoothScrollContainer.gd" id="4_vgwdq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_o55q6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_uh3mw")]
+layout_mode = 2
+text = "Back"
+scene_name = "main_menu"
+
+[node name="SmoothScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("4_vgwdq")
+
+[node name="Control" type="Control" parent="VBoxContainer/SmoothScrollContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/SmoothScrollContainer/Control"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 50.0
+bbcode_enabled = true
+text = "Some text goes here."

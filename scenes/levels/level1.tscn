@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://mos5knhtw8tf"]
+
+[ext_resource type="PackedScene" uid="uid://bhm0m6fakuqer" path="res://scenes/cards/card.tscn" id="1_gffpc"]
+
+[node name="Cards" type="Node"]
+
+[node name="Card" parent="." instance=ExtResource("1_gffpc")]
+
+[node name="Card4" parent="." instance=ExtResource("1_gffpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.76223, 0)
+
+[node name="Card2" parent="." instance=ExtResource("1_gffpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Card3" parent="." instance=ExtResource("1_gffpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.762, 0)
+
+[node name="Card5" parent="." instance=ExtResource("1_gffpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94344, -0.762, 0)
+
+[node name="Card6" parent="." instance=ExtResource("1_gffpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94344, 0.0242887, 0)
